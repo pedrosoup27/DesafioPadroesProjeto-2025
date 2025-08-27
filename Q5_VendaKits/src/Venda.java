@@ -3,6 +3,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import produto.ProdutoComponent;
+import produto.KitDeProdutos;
+
 public class Venda {
     private LocalDateTime data;
     private List<ItemDeVenda> itens;
@@ -28,7 +31,7 @@ public class Venda {
         return total;
     }
 
-    public void registrarVenda(Produto produto, int quantidade) {
+    public void registrarVenda(ProdutoComponent produto, int quantidade) {
         ItemDeVenda item = new ItemDeVenda(produto, quantidade);
         itens.add(item);
     }
@@ -39,7 +42,13 @@ public class Venda {
         nota.append(data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
         nota.append("\n");
         for (ItemDeVenda item : itens) {
-            nota.append(item.toString());
+            if (item.getProduto() instanceof KitDeProdutos) {
+                nota.append(item.toString().trim()); //trim pra tirar o \n no final
+                nota.append(" (10% de desconto!)\n");
+            }
+            else{
+                nota.append(item.toString());
+            }
         }
         nota.append(String.format("Total: %.2f", getTotal()));
         return nota.toString();
