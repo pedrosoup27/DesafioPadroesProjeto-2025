@@ -1,7 +1,7 @@
 public class CodificaDesloca implements StrategyCodificador
 {
     @Override
-    private String codificar(String str)
+    public String codificar(String str)
     {
         char[] aux = str.toCharArray();
         char[] resp = new char[str.length()];
@@ -13,7 +13,7 @@ public class CodificaDesloca implements StrategyCodificador
     }
 
     @Override
-    private String dcodificar(String str)
+    public String decodificar(String str)
     {
         char[] aux = str.toCharArray();
         char[] resp = new char[str.length()];

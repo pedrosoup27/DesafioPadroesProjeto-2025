@@ -10,15 +10,15 @@ public class App
         aux = cod.codifica(aux);
         System.out.println(aux);
         
-        aux = cod.deCodifica(aux);
+        aux = cod.decodifica(aux);
         System.out.println(aux);
 
-        cod.setEstrategia(new CodificaDesloca());
+        cod.setStrategy(new CodificaDesloca());
         
         aux = cod.codifica(aux);
         System.out.println(aux);
         
-        aux = cod.deCodifica(aux);
+        aux = cod.decodifica(aux);
         System.out.println(aux);
     }
 }
