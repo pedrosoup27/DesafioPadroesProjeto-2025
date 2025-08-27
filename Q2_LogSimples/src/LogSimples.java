@@ -4,9 +4,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class LogSimples implements Iterable<String>{
-    private List<String> mensagens;
+    private static List<String> mensagens;
 
-    public LogSimples(){
+    //Adicionamos instância global
+    private static LogSimples instancia;
+
+    //Privamos o método construtor
+    private LogSimples(){
         mensagens = new LinkedList<>();
     }
 
@@ -19,4 +23,13 @@ public class LogSimples implements Iterable<String>{
     public Iterator<String> iterator() {
         return mensagens.iterator();
     }
+
+    //Criamos o método de instanciação
+    public static LogSimples getInstancia(){
+        if(instancia == null){
+            instancia = new LogSimples();
+        }
+        return instancia;
+    }
+
 }
