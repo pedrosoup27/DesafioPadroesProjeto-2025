@@ -4,10 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class LogSimples implements Iterable<String>{
-    private static List<String> mensagens;
-
     //Adicionamos instância global
     private static LogSimples instancia;
+    private List<String> mensagens;
 
     //Privamos o método construtor
     private LogSimples(){
