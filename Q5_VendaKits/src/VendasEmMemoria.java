@@ -3,14 +3,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import produto.ProdutoSimples;
+import produto.KitDeProdutos;
+import produto.ProdutoComponent;
+
 public class VendasEmMemoria implements VendasFachada{
-	private List<Produto> produtos;
+	private List<ProdutoComponent> produtos;
 	
 	public VendasEmMemoria() {
 		produtos = new ArrayList<>();
-		produtos.add(new Produto(1, "Caneta", 1.55));
-		produtos.add(new Produto(2, "Borracha", 1.15));
-		produtos.add(new Produto(3, "Caderno", 32.99));
+		ProdutoSimples caneta = new ProdutoSimples(1, "Caneta", 1.55);
+		ProdutoSimples borracha = new ProdutoSimples(2, "Borracha", 1.15);
+		ProdutoSimples caderno = new ProdutoSimples(3, "Caderno", 32.99);
+		produtos.add(caneta);
+		produtos.add(borracha);
+		produtos.add(caderno);
+
+		 // criando o kit de produtos e adicionando a lista de vendas em memoria
+        KitDeProdutos kitEscolar = new KitDeProdutos(4, "Kit Escolar Completo");
+        kitEscolar.adicionar(caneta);
+        kitEscolar.adicionar(borracha);
+        kitEscolar.adicionar(caderno);
+        produtos.add(kitEscolar);
 	}
 	
 	@Override
@@ -20,7 +34,7 @@ public class VendasEmMemoria implements VendasFachada{
 
 	@Override
 	public void registrarVenda(Venda umaVenda, int codigoProduto, int quantidade) {
-		Produto prod = produtos.stream().filter(p -> p.getId() == codigoProduto).findFirst().get();
+		ProdutoComponent prod = produtos.stream().filter(p -> p.getId() == codigoProduto).findFirst().get();
 		umaVenda.registrarVenda(prod, quantidade);
 	}
 
@@ -30,7 +44,7 @@ public class VendasEmMemoria implements VendasFachada{
 	}
 
 	@Override
-	public List<Produto> buscarProdutos() {
+	public List<ProdutoComponent> buscarProdutos() {
 		return Collections.unmodifiableList(produtos);
 	}
 

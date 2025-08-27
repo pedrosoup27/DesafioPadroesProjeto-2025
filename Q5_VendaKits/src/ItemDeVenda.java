@@ -1,13 +1,15 @@
+import produto.ProdutoComponent;
+
 public class ItemDeVenda {
-    private Produto produto;
+    private ProdutoComponent produto;
     private int quantidade;
 
-    public ItemDeVenda(Produto produto, int quantidade) {
+    public ItemDeVenda(ProdutoComponent produto, int quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
     }
 
-    public Produto getProduto() {
+    public ProdutoComponent getProduto() {
         return produto;
     }
 

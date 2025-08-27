@@ -1,5 +1,7 @@
 import java.util.List;
 
+import produto.ProdutoComponent;
+
 public interface VendasFachada {
 
     /**
@@ -29,5 +31,5 @@ public interface VendasFachada {
      * Consulta a lista de produtos disponíveis para venda
      * @return a lista de produtos disponíveis para venda
      */
-    List<Produto> buscarProdutos();
+    List<ProdutoComponent> buscarProdutos();
 }
